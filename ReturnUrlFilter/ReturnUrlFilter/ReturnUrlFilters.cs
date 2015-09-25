@@ -33,7 +33,7 @@ namespace ReturnUrlFilter
     {
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            if (filterContext.Result.GetType() == typeof(RedirectResult))
+            if (filterContext.Result.GetType() == typeof(RedirectResult) || filterContext.Result.GetType() == typeof(RedirectToRouteResult))
             {
                 var returnUrl = filterContext.RequestContext.HttpContext.Request.Form[SetReturnUrlAttribute.KeyName];
                 if (!string.IsNullOrEmpty(returnUrl))
